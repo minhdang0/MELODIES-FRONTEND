@@ -4,4 +4,8 @@ export const CONSTANTS = {
     REFRESH_TOKEN: 'refresh_token',
     USER_INFO: 'user_info',
   },
+  PATH: {
+    DASHBOARD: '/',
+    LOGIN: '/login',
+  },
 };
