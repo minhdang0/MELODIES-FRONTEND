@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
-import { CONSTANTS } from '../../shared/common/contants';
-import { API_ENDPOINTS } from '../../shared/common/api_endpoints';
+import { CONSTANTS } from '../../shared/common/constants';
 import { ApiResponse, LoginData, RefreshTokenResponse } from '../../shared/models/response';
+import { API_ENDPOINTS } from '../../shared/common/api_endpoints';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -17,16 +17,16 @@ export class AuthService {
   private isAuthentication = signal<boolean>(false);
 
   user = computed(() => this.currentUser());
-  isLogined = computed(() => this.isAuthentication());
+  isLoggedIn = computed(() => this.isAuthentication());
 
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
 
   constructor() {
-    this.loadInfomationInit();
+    this.loadInformationInit();
   }
 
-  loadInfomationInit(): void {
+  loadInformationInit(): void {
     const user = this.getUser();
     if (user) {
       this.currentUser.set(user);

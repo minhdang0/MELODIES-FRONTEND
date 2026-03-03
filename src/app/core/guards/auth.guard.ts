@@ -6,7 +6,7 @@ import { API_ENDPOINTS } from '../../shared/common/api_endpoints';
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  if (!authService.isLoggined()) {
+  if (!authService.isLoggedIn()) {
     router.navigate([API_ENDPOINTS.AUTH.LOGIN], {
       queryParams: { returnUrl: state.url },
     });
